@@ -490,6 +490,66 @@ nav.menu-open .mobile-menu{ display:flex; }
 .podcast-empty{ max-width:520px; margin:0 auto; text-align:center; padding:40px 24px; border:1px dashed var(--rule-on-paper); border-radius:4px; }
 .podcast-empty p{ font-size:0.9rem; color:var(--text-on-paper-dim); margin:0; }
 
+
+/* ===== Spacing & alignment system (one reading column, consistent rhythm) ===== */
+:root{ --col:820px; --sec:80px; }
+section{ padding:var(--sec) 0; }
+.hero-section{ padding:56px 0 64px; }
+
+/* Page headers share the same left edge as the content below them */
+.page-header{ max-width:calc(var(--col) + 64px); padding:72px 32px 0; }
+.page-header h1{ max-width:none; line-height:1.2; }
+.page-header p{ margin-top:18px; max-width:62ch; font-size:1.02rem; line-height:1.7; }
+.page-header + section{ padding-top:44px; }
+.page-header + section[style]{ padding-top:36px !important; }
+section:has(> .wrap > .confidentiality-note:only-child){ padding-bottom:0; }
+
+/* Every narrow content block uses the same centred column */
+.content-block, .philosophy-intro, .bio-copy, .edu-timeline, .process-list,
+.pub-list, .confidentiality-note, .about-intro, .legal-block{
+  max-width:var(--col); margin-left:auto; margin-right:auto;
+}
+.confidentiality-note{ padding:22px 26px; }
+.wrap > .eyebrow:has(+ h2 + .bio-copy), .wrap > .eyebrow:has(+ .bio-copy),
+.wrap > .eyebrow:has(+ h2 + .process-list), .wrap > .eyebrow:has(+ h2 + .legal-block){
+  max-width:var(--col); margin-left:auto; margin-right:auto;
+}
+.wrap > .eyebrow + h2{ max-width:var(--col); margin:0 auto 32px; }
+.bio-copy, .process-list{ margin-top:0; }
+
+/* Legal / publication blocks: clear separation between groups */
+.legal-block{ margin-top:0; }
+.legal-block + .legal-block{ margin-top:56px; padding-top:48px; border-top:1px solid var(--rule-on-paper); }
+.on-ink .legal-block + .legal-block{ border-top-color:var(--rule-on-ink); }
+.legal-block-head{ margin-bottom:18px; }
+.legal-block-head h3{ margin-top:8px; font-size:1.3rem; }
+.legal-block > p.legal-intro{ margin:0 0 18px; }
+
+.section-head{ margin-bottom:44px; }
+
+@media (max-width:860px){
+  :root{ --sec:56px; }
+  .page-header{ padding:44px 22px 0; }
+  .page-header + section{ padding-top:32px; }
+  .legal-block + .legal-block{ margin-top:40px; padding-top:36px; }
+  .section-head{ margin-bottom:32px; }
+}
+.about-facts .placeholder-note{ text-align:left; }
+
+/* Constrain every child of text-led sections to the same column */
+.wrap:has(> .process-list) > *, .wrap:has(> .bio-copy) > *, .wrap:has(> .legal-block) > *,
+.wrap:has(> .philosophy-intro) > *, .wrap:has(> .bucket) > *,
+.pillar-grid, .diff-grid, .edu-timeline{
+  max-width:var(--col); margin-left:auto; margin-right:auto;
+}
+.wrap:has(> .bucket) > .section-head{ text-align:left; margin-bottom:32px; }
+.wrap:has(> .bucket) > .subnav{ justify-content:flex-start; margin-bottom:56px !important; }
+.bucket + .bucket{ margin-top:56px; }
+.bucket-head{ margin-bottom:20px; }
+.bucket .pub-list{ max-width:none; }
+.pillar-grid{ margin-top:40px; }
+.process-list{ margin-top:40px; }
+/* ===== end spacing system ===== */
 </style>
 </head>
 <body>
@@ -545,16 +605,15 @@ nav.menu-open .mobile-menu{ display:flex; }
           <div class="about-fact"><span class="fact-mark">—</span><span>PhD Candidate in Law, O.P. Jindal Global University</span></div>
         </div>
         <div class="social-row">
-          <a href="#" class="social-btn" target="_blank" rel="noopener">
+          <a href="https://www.linkedin.com/in/raushan-tara-jaswal-75529985/" class="social-btn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
             <span>LinkedIn</span>
           </a>
-          <a href="#" class="social-btn" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/raushantara/" class="social-btn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg>
             <span>Instagram</span>
           </a>
         </div>
-        <div class="placeholder-note" style="margin-top:12px;">Social links are placeholders — swap in real profile URLs when ready. More platforms can be added alongside these.</div>
       </div>
     </div>
   </div>

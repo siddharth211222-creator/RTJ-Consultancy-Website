@@ -490,6 +490,66 @@ nav.menu-open .mobile-menu{ display:flex; }
 .podcast-empty{ max-width:520px; margin:0 auto; text-align:center; padding:40px 24px; border:1px dashed var(--rule-on-paper); border-radius:4px; }
 .podcast-empty p{ font-size:0.9rem; color:var(--text-on-paper-dim); margin:0; }
 
+
+/* ===== Spacing & alignment system (one reading column, consistent rhythm) ===== */
+:root{ --col:820px; --sec:80px; }
+section{ padding:var(--sec) 0; }
+.hero-section{ padding:56px 0 64px; }
+
+/* Page headers share the same left edge as the content below them */
+.page-header{ max-width:calc(var(--col) + 64px); padding:72px 32px 0; }
+.page-header h1{ max-width:none; line-height:1.2; }
+.page-header p{ margin-top:18px; max-width:62ch; font-size:1.02rem; line-height:1.7; }
+.page-header + section{ padding-top:44px; }
+.page-header + section[style]{ padding-top:36px !important; }
+section:has(> .wrap > .confidentiality-note:only-child){ padding-bottom:0; }
+
+/* Every narrow content block uses the same centred column */
+.content-block, .philosophy-intro, .bio-copy, .edu-timeline, .process-list,
+.pub-list, .confidentiality-note, .about-intro, .legal-block{
+  max-width:var(--col); margin-left:auto; margin-right:auto;
+}
+.confidentiality-note{ padding:22px 26px; }
+.wrap > .eyebrow:has(+ h2 + .bio-copy), .wrap > .eyebrow:has(+ .bio-copy),
+.wrap > .eyebrow:has(+ h2 + .process-list), .wrap > .eyebrow:has(+ h2 + .legal-block){
+  max-width:var(--col); margin-left:auto; margin-right:auto;
+}
+.wrap > .eyebrow + h2{ max-width:var(--col); margin:0 auto 32px; }
+.bio-copy, .process-list{ margin-top:0; }
+
+/* Legal / publication blocks: clear separation between groups */
+.legal-block{ margin-top:0; }
+.legal-block + .legal-block{ margin-top:56px; padding-top:48px; border-top:1px solid var(--rule-on-paper); }
+.on-ink .legal-block + .legal-block{ border-top-color:var(--rule-on-ink); }
+.legal-block-head{ margin-bottom:18px; }
+.legal-block-head h3{ margin-top:8px; font-size:1.3rem; }
+.legal-block > p.legal-intro{ margin:0 0 18px; }
+
+.section-head{ margin-bottom:44px; }
+
+@media (max-width:860px){
+  :root{ --sec:56px; }
+  .page-header{ padding:44px 22px 0; }
+  .page-header + section{ padding-top:32px; }
+  .legal-block + .legal-block{ margin-top:40px; padding-top:36px; }
+  .section-head{ margin-bottom:32px; }
+}
+.about-facts .placeholder-note{ text-align:left; }
+
+/* Constrain every child of text-led sections to the same column */
+.wrap:has(> .process-list) > *, .wrap:has(> .bio-copy) > *, .wrap:has(> .legal-block) > *,
+.wrap:has(> .philosophy-intro) > *, .wrap:has(> .bucket) > *,
+.pillar-grid, .diff-grid, .edu-timeline{
+  max-width:var(--col); margin-left:auto; margin-right:auto;
+}
+.wrap:has(> .bucket) > .section-head{ text-align:left; margin-bottom:32px; }
+.wrap:has(> .bucket) > .subnav{ justify-content:flex-start; margin-bottom:56px !important; }
+.bucket + .bucket{ margin-top:56px; }
+.bucket-head{ margin-bottom:20px; }
+.bucket .pub-list{ max-width:none; }
+.pillar-grid{ margin-top:40px; }
+.process-list{ margin-top:40px; }
+/* ===== end spacing system ===== */
 </style>
 </head>
 <body>
@@ -549,7 +609,7 @@ nav.menu-open .mobile-menu{ display:flex; }
 
 <!-- ============ PAGE HEADER ============ -->
 <header class="on-paper wrap page-header">
-  <h1>Selected Legal and Advisory Experience</h1>
+  <h1>Legal and Advisory Experience</h1>
   <p>Legal and strategic advisory spanning climate governance, environmental regulation, public policy, constitutional law, public international law and human rights — supported by experience in Supreme Court and appellate litigation, commercial disputes, contractual advisory, and property-linked transactions.</p>
 </header>
 
